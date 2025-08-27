@@ -1,1 +1,91 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Binary and Beyond Design System */
+    --background: 220 13% 18%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 13% 18%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 13% 18%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 174 64% 47%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 26 85% 58%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 13% 25%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 174 64% 47%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 25%;
+    --input: 220 13% 25%;
+    --ring: 174 64% 47%;
+
+    --radius: 0.5rem;
+
+    /* Custom colors for Binary and Beyond */
+    --hero-bg: 220 13% 16%;
+    --teal-primary: 174 64% 47%;
+    --teal-secondary: 174 44% 40%;
+    --orange-primary: 26 85% 58%;
+    --orange-secondary: 26 75% 50%;
+    --contact-bg: 174 64% 47%;
+    --footer-bg: 220 13% 14%;
+  }
+
+  .dark {
+    --background: 220 13% 18%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 13% 18%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 13% 18%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 174 64% 47%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 26 85% 58%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 13% 25%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 174 64% 47%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 25%;
+    --input: 220 13% 25%;
+    --ring: 174 64% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
