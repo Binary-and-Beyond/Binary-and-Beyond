@@ -18,7 +18,7 @@ All colors MUST be HSL.
     --popover: 220 13% 18%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 174 64% 47%;
+    --primary: 174 64% 35%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 26 85% 58%;
@@ -27,7 +27,7 @@ All colors MUST be HSL.
     --muted: 220 13% 25%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 174 64% 47%;
+    --accent: 174 64% 35%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -35,17 +35,19 @@ All colors MUST be HSL.
 
     --border: 220 13% 25%;
     --input: 220 13% 25%;
-    --ring: 174 64% 47%;
+    --ring: 174 64% 35%;
 
     --radius: 0.5rem;
 
     /* Custom colors for Binary and Beyond */
     --hero-bg: 220 13% 16%;
-    --teal-primary: 174 64% 47%;
-    --teal-secondary: 174 44% 40%;
+    --teal-primary: 174 64% 35%;
+    --teal-secondary: 174 44% 30%;
     --orange-primary: 26 85% 58%;
     --orange-secondary: 26 75% 50%;
-    --contact-bg: 174 64% 47%;
+    --purple-primary: 270 60% 50%;
+    --red-primary: 0 70% 50%;
+    --contact-bg: 174 64% 35%;
     --footer-bg: 220 13% 14%;
   }
 
@@ -59,7 +61,7 @@ All colors MUST be HSL.
     --popover: 220 13% 18%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 174 64% 47%;
+    --primary: 174 64% 35%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 26 85% 58%;
@@ -68,7 +70,7 @@ All colors MUST be HSL.
     --muted: 220 13% 25%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 174 64% 47%;
+    --accent: 174 64% 35%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -76,7 +78,7 @@ All colors MUST be HSL.
 
     --border: 220 13% 25%;
     --input: 220 13% 25%;
-    --ring: 174 64% 47%;
+    --ring: 174 64% 35%;
   }
 }
 
@@ -87,5 +89,35 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Custom color utilities */
+  .bg-teal-primary {
+    background-color: hsl(var(--teal-primary));
+  }
+
+  .bg-orange-primary {
+    background-color: hsl(var(--orange-primary));
+  }
+
+  .bg-purple-primary {
+    background-color: hsl(var(--purple-primary));
+  }
+
+  .bg-red-primary {
+    background-color: hsl(var(--red-primary));
   }
 }

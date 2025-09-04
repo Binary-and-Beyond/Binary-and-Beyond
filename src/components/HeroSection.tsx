@@ -26,8 +26,8 @@ const HeroSection = () => {
     const availableSkills = allSkills.filter(
       (skill) => !removedSkills.includes(skill.name)
     );
-    const startIndex = (currentSet * 6) % availableSkills.length;
-    return availableSkills.slice(startIndex, startIndex + 6);
+    const startIndex = (currentSet * 4  ) % availableSkills.length;
+    return availableSkills.slice(startIndex, startIndex + 4);
   };
 
   const currentSkills = getCurrentSkills();
@@ -72,44 +72,25 @@ const HeroSection = () => {
         </p>
       </div>
 
-      {/* Floating Skills Badges */}
-      <div className="relative w-full max-w-4xl h-96 mb-20">
-        {currentSkills.map((skill, index) => {
-          const positions = [
-            { top: "10%", left: "15%", rotation: "rotate-2" },
-            { top: "25%", left: "70%", rotation: "-rotate-1" },
-            { top: "60%", left: "10%", rotation: "rotate-1" },
-            { top: "75%", left: "65%", rotation: "-rotate-2" },
-            { top: "35%", left: "40%", rotation: "rotate-3" },
-            { top: "50%", left: "80%", rotation: "-rotate-3" },
-          ];
-
-          const position = positions[index % positions.length];
-
-          return (
-            <div
-              key={skill.name}
-              className={`absolute ${position.rotation} transform transition-all duration-300 hover:scale-105`}
-              style={{
-                top: position.top,
-                left: position.left,
-              }}
+      {/* Skills Badges in a line */}
+      <div className="flex flex-wrap justify-center items-center gap-4 mb-20 max-w-6xl mx-auto px-6">
+        {currentSkills.map((skill, index) => (
+          <div
+            key={skill.name}
+            className="flex items-center gap-3 px-4 py-3 bg-gray-800/80 backdrop-blur-sm rounded-lg border border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            <span className="text-lg">{skill.icon}</span>
+            <span className="text-sm font-medium text-white whitespace-nowrap">
+              {skill.name}
+            </span>
+            <button
+              onClick={() => removeSkill(skill.name)}
+              className="ml-2 w-4 h-4 text-gray-400 hover:text-white transition-colors flex items-center justify-center"
             >
-              <div className="flex items-center gap-3 px-4 py-3 bg-gray-800/80 backdrop-blur-sm rounded-lg border border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300">
-                <span className="text-lg">{skill.icon}</span>
-                <span className="text-sm font-medium text-white whitespace-nowrap">
-                  {skill.name}
-                </span>
-                <button
-                  onClick={() => removeSkill(skill.name)}
-                  className="ml-2 w-4 h-4 text-gray-400 hover:text-white transition-colors flex items-center justify-center"
-                >
-                  <X className="w-3 h-3" />
-                </button>
-              </div>
-            </div>
-          );
-        })}
+              <X className="w-3 h-3" />
+            </button>
+          </div>
+        ))}
       </div>
 
       <div className="text-center relative z-10">

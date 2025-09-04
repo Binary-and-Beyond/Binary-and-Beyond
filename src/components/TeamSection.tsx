@@ -25,18 +25,18 @@ const TeamSection = () => {
       image: boy2,
     },
     {
-      name: "Pujitha Sunnapu",
+      name: "Pujita Sunnapu",
       title: "Data Analyst",
       image: girl1,
     },
     {
-      name: "Team Member 4",
+      name: "Utkarsh",
       title: "UX Designer",
       image: girl2,
     },
     {
-      name: "Team Member 5",
-      title: "Backend Developer",
+      name: "Usama",
+      title: "Backend Developer", 
       image: boy3,
     },
   ];
