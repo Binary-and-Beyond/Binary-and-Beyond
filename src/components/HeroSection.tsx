@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useParallax } from "@/hooks/use-parallax";
 
 const HeroSection = () => {
   const allSkills = [
@@ -26,7 +27,7 @@ const HeroSection = () => {
     const availableSkills = allSkills.filter(
       (skill) => !removedSkills.includes(skill.name)
     );
-    const startIndex = (currentSet * 4  ) % availableSkills.length;
+    const startIndex = (currentSet * 4) % availableSkills.length;
     return availableSkills.slice(startIndex, startIndex + 4);
   };
 
@@ -45,13 +46,19 @@ const HeroSection = () => {
     setRemovedSkills((prev) => [...prev, skillName]);
   };
 
+  const bgRef = useParallax({ speed: 0.2, maxTranslate: 40 });
+
   return (
     <section
       id="home"
       className="min-h-screen bg-hero-bg flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden"
+      style={{ backgroundAttachment: "fixed" }}
     >
       {/* Background grid pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div
+        ref={bgRef as React.RefObject<HTMLDivElement>}
+        className="absolute inset-0 opacity-5"
+      >
         <div
           className="w-full h-full"
           style={{
@@ -62,25 +69,25 @@ const HeroSection = () => {
       </div>
 
       <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
-        <h1 className="text-6xl md:text-7xl font-bold mb-6 text-foreground">
-          WELCOME TO BINARY
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground">
+          Welcome to Binary
           <br />
-          AND BEYOND
+          and Beyond
         </h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
           Where logic meets imagination, and code becomes creation
         </p>
       </div>
 
       {/* Skills Badges in a line */}
-      <div className="flex flex-wrap justify-center items-center gap-4 mb-20 max-w-6xl mx-auto px-6">
+      <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 mb-20 max-w-6xl mx-auto px-6">
         {currentSkills.map((skill, index) => (
           <div
             key={skill.name}
-            className="flex items-center gap-3 px-4 py-3 bg-gray-800/80 backdrop-blur-sm rounded-lg border border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="flex items-center gap-3 px-3 md:px-4 py-2 md:py-3 bg-gray-800/80 backdrop-blur-sm rounded-lg border border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            <span className="text-lg">{skill.icon}</span>
-            <span className="text-sm font-medium text-white whitespace-nowrap">
+            <span className="text-base md:text-lg">{skill.icon}</span>
+            <span className="text-xs md:text-sm font-medium text-white whitespace-nowrap">
               {skill.name}
             </span>
             <button
@@ -91,14 +98,6 @@ const HeroSection = () => {
             </button>
           </div>
         ))}
-      </div>
-
-      <div className="text-center relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-          EVERY BYTE TELLS A STORY.
-          <br />
-          HERE IS OURS.
-        </h2>
       </div>
     </section>
   );

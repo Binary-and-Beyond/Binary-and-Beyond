@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global scrollbar hide for stacked scroll experience */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/***** Optional: hide default scrollbars on webkit *****/
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Improve stacking visuals */
+.stacked-section {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */

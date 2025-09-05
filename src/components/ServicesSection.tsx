@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+import { useParallax } from "@/hooks/use-parallax";
 
 const ServicesSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -52,16 +53,28 @@ const ServicesSection = () => {
     }
   }, []);
 
+  const headingRef = useParallax({ speed: 0.12, maxTranslate: 20 });
   return (
-    <section id="services" className="py-20 px-6 bg-background">
+    <section
+      id="services"
+      className="py-20 px-6 bg-background relative"
+      style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)`,
+        backgroundSize: "20px 20px",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold mb-6 text-foreground">
-            OUR SERVICES
+        <div
+          ref={headingRef as React.RefObject<HTMLDivElement>}
+          className="mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+            Our services
           </h2>
           <p className="text-muted-foreground max-w-lg">
-            WE OFFER MORE THAN JUST FREELANCE SERVICES. WE DELIVER DIGITAL
-            CRAFTSMANSHIP THAT BRIDGES LOGIC AND IMAGINATION.
+            We offer more than just freelance services. We deliver digital
+            craftsmanship that bridges logic and imagination.
           </p>
         </div>
 
@@ -70,7 +83,7 @@ const ServicesSection = () => {
           {canScrollLeft && (
             <button
               onClick={scrollLeft}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 z-10 -translate-x-14"
+              className="hidden sm:flex absolute left-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white/30 transition-all duration-300 z-10 -translate-x-14"
             >
               <ArrowLeft className="w-6 h-6 text-white" />
             </button>
@@ -78,13 +91,13 @@ const ServicesSection = () => {
 
           <div
             ref={scrollContainerRef}
-            className="flex gap-8 overflow-x-auto scrollbar-hide pb-4"
+            className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide pb-4"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {/* Website and Digital Presence Card */}
-            <div className="bg-teal-primary rounded-3xl p-8 text-white relative overflow-hidden min-w-[500px] flex-shrink-0">
-              <h3 className="text-2xl font-bold mb-6">
-                Website and Digital Presence
+            <div className="bg-teal-primary rounded-3xl p-6 md:p-8 text-white relative overflow-hidden min-w-[320px] md:min-w-[500px] flex-shrink-0">
+              <h3 className="text-xl md:text-2xl font-bold mb-6">
+                Website and digital presence
               </h3>
 
               <div className="space-y-3 mb-8">
@@ -113,16 +126,18 @@ const ServicesSection = () => {
               </div>
 
               <div className="border-t border-white/20 pt-6">
-                <p className="text-xs text-white/80 mb-4">Our History</p>
+                <p className="text-xs text-white/80 mb-4">Our history</p>
                 <div className="flex justify-between items-end">
                   <div>
-                    <div className="text-3xl font-bold">50% Faster</div>
+                    <div className="text-2xl md:text-3xl font-bold">
+                      50% faster
+                    </div>
                     <div className="text-sm text-white/80">
                       launch of projects
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold">5</div>
+                    <div className="text-2xl md:text-3xl font-bold">5</div>
                     <div className="text-sm text-white/80">
                       projects completed
                     </div>
@@ -132,8 +147,10 @@ const ServicesSection = () => {
             </div>
 
             {/* Marketing and Growth Card */}
-            <div className="bg-orange-primary rounded-3xl p-8 text-white relative overflow-hidden min-w-[500px] flex-shrink-0">
-              <h3 className="text-2xl font-bold mb-6">Marketing and Growth</h3>
+            <div className="bg-orange-primary rounded-3xl p-6 md:p-8 text-white relative overflow-hidden min-w-[320px] md:min-w-[500px] flex-shrink-0">
+              <h3 className="text-xl md:text-2xl font-bold mb-6">
+                Marketing and growth
+              </h3>
 
               <div className="space-y-3 mb-8">
                 <div className="flex items-center gap-2">
@@ -151,16 +168,18 @@ const ServicesSection = () => {
               </div>
 
               <div className="border-t border-white/20 pt-6">
-                <p className="text-xs text-white/80 mb-4">Our History</p>
+                <p className="text-xs text-white/80 mb-4">Our history</p>
                 <div className="flex justify-between items-end">
                   <div>
-                    <div className="text-3xl font-bold">50% Faster</div>
+                    <div className="text-2xl md:text-3xl font-bold">
+                      50% faster
+                    </div>
                     <div className="text-sm text-white/80">
                       launch of projects
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold">5</div>
+                    <div className="text-2xl md:text-3xl font-bold">5</div>
                     <div className="text-sm text-white/80">
                       projects completed
                     </div>
@@ -170,11 +189,13 @@ const ServicesSection = () => {
             </div>
 
             {/* Creative & Content Card */}
-            <div className="bg-purple-primary rounded-3xl p-8 text-white relative overflow-hidden min-w-[500px] flex-shrink-0">
+            <div className="bg-purple-primary rounded-3xl p-6 md:p-8 text-white relative overflow-hidden min-w-[320px] md:min-w-[500px] flex-shrink-0">
               <div className="absolute top-4 right-4 text-6xl font-bold text-white/10">
                 03
               </div>
-              <h3 className="text-2xl font-bold mb-6">Creative & Content</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-6">
+                Creative & content
+              </h3>
 
               <div className="space-y-3 mb-8">
                 <div className="flex items-center gap-2">
@@ -198,16 +219,18 @@ const ServicesSection = () => {
               </div>
 
               <div className="border-t border-white/20 pt-6">
-                <p className="text-xs text-white/80 mb-4">Our History</p>
+                <p className="text-xs text-white/80 mb-4">Our history</p>
                 <div className="flex justify-between items-end">
                   <div>
-                    <div className="text-3xl font-bold">50% Faster</div>
+                    <div className="text-2xl md:text-3xl font-bold">
+                      50% faster
+                    </div>
                     <div className="text-sm text-white/80">
                       launch of projects
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold">5</div>
+                    <div className="text-2xl md:text-3xl font-bold">5</div>
                     <div className="text-sm text-white/80">
                       projects completed
                     </div>
@@ -217,12 +240,12 @@ const ServicesSection = () => {
             </div>
 
             {/* Data Analytics & Others Card */}
-            <div className="bg-red-primary rounded-3xl p-8 text-white relative overflow-hidden min-w-[500px] flex-shrink-0">
+            <div className="bg-red-primary rounded-3xl p-6 md:p-8 text-white relative overflow-hidden min-w-[320px] md:min-w-[500px] flex-shrink-0">
               <div className="absolute top-4 right-4 text-6xl font-bold text-white/10">
                 04
               </div>
-              <h3 className="text-2xl font-bold mb-6">
-                Data Analytics & Others
+              <h3 className="text-xl md:text-2xl font-bold mb-6">
+                Data analytics & others
               </h3>
 
               <div className="space-y-3 mb-8">
@@ -240,7 +263,7 @@ const ServicesSection = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">Industry-Specific Solutions</span>
+                  <span className="text-sm">Industry-specific solutions</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-1 h-1 bg-white rounded-full"></span>
@@ -251,16 +274,18 @@ const ServicesSection = () => {
               </div>
 
               <div className="border-t border-white/20 pt-6">
-                <p className="text-xs text-white/80 mb-4">Our History</p>
+                <p className="text-xs text-white/80 mb-4">Our history</p>
                 <div className="flex justify-between items-end">
                   <div>
-                    <div className="text-3xl font-bold">50% Faster</div>
+                    <div className="text-2xl md:text-3xl font-bold">
+                      50% faster
+                    </div>
                     <div className="text-sm text-white/80">
                       launch of projects
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold">5</div>
+                    <div className="text-2xl md:text-3xl font-bold">5</div>
                     <div className="text-sm text-white/80">
                       projects completed
                     </div>
@@ -274,7 +299,7 @@ const ServicesSection = () => {
           {canScrollRight && (
             <button
               onClick={scrollRight}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 z-10 translate-x-14"
+              className="hidden sm:flex absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white/30 transition-all duration-300 z-10 translate-x-14"
             >
               <ArrowRight className="w-6 h-6 text-white" />
             </button>
