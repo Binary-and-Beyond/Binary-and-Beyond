@@ -2,13 +2,17 @@ import { Badge } from "@/components/ui/badge";
 import { X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useParallax } from "@/hooks/use-parallax";
+import LiquidEther from "./LiquidEther.js";
+
+import TextType from "./TextType";
+import ScrollVelocity from "./ScrollVelocity";
 
 const HeroSection = () => {
   const allSkills = [
     { name: "Web Development", icon: "🌐" },
     { name: "Product Design", icon: "🎨" },
     { name: "Building Chatbot", icon: "🤖" },
-    { name: "Building AI Agent", icon: "💗" },
+    { name: "Building AI Agent", icon: "🖥️  " },
     { name: "Mobile Development", icon: "📱" },
     { name: "UI/UX Design", icon: "✨" },
     { name: "Data Science", icon: "📊" },
@@ -19,43 +23,43 @@ const HeroSection = () => {
     { name: "Cybersecurity", icon: "🔒" },
   ];
 
-  const [currentSet, setCurrentSet] = useState(0);
-  const [removedSkills, setRemovedSkills] = useState<string[]>([]);
+  // const [currentSet, setCurrentSet] = useState(0);
+  // const [removedSkills, setRemovedSkills] = useState<string[]>([]);
 
-  // Get current 6 skills to display
-  const getCurrentSkills = () => {
-    const availableSkills = allSkills.filter(
-      (skill) => !removedSkills.includes(skill.name)
-    );
-    const startIndex = (currentSet * 4) % availableSkills.length;
-    return availableSkills.slice(startIndex, startIndex + 4);
-  };
+  // // Get current 6 skills to display
+  // const getCurrentSkills = () => {
+  //   const availableSkills = allSkills.filter(
+  //     (skill) => !removedSkills.includes(skill.name)
+  //   );
+  //   const startIndex = (currentSet * 4) % availableSkills.length;
+  //   return availableSkills.slice(startIndex, startIndex + 4);
+  // };
 
-  const currentSkills = getCurrentSkills();
+  // const currentSkills = getCurrentSkills();
 
-  // Auto-cycle function
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSet((prev) => prev + 1);
-    }, 4000); // Cycle every 4 seconds
+  // // Auto-cycle function
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentSet((prev) => prev + 1);
+  //   }, 4000); // Cycle every 4 seconds
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  const removeSkill = (skillName: string) => {
-    setRemovedSkills((prev) => [...prev, skillName]);
-  };
+  // const removeSkill = (skillName: string) => {
+  //   setRemovedSkills((prev) => [...prev, skillName]);
+  // };
 
   const bgRef = useParallax({ speed: 0.2, maxTranslate: 40 });
 
   return (
     <section
       id="home"
-      className="min-h-screen bg-hero-bg flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden"
+      className="min-h-screen bg-black flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden"
       style={{ backgroundAttachment: "fixed" }}
     >
       {/* Background grid pattern */}
-      <div
+      {/* <div
         ref={bgRef as React.RefObject<HTMLDivElement>}
         className="absolute inset-0 opacity-5"
       >
@@ -66,21 +70,43 @@ const HeroSection = () => {
             backgroundSize: "20px 20px",
           }}
         ></div>
+      </div> */}
+      <div className="absolute inset-0 w-full h-full">
+        <LiquidEther
+          colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+          mouseForce={25}
+          cursorSize={120}
+          resolution={0.6}
+          autoDemo={true}
+          autoSpeed={0.8}
+          autoIntensity={2.5}
+          style={{ width: "100%", height: "100%" }}
+          className="w-full h-full"
+        />
       </div>
 
       <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground">
-          Welcome to Binary
-          <br />
-          and Beyond
-        </h1>
+        {/* <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground">
+            Welcome to Binary
+            <br />
+            and Beyond
+          </h1> */}
+        <TextType
+          text={["Welcome to Binary and Beyond"]}
+          typingSpeed={75}
+          pauseDuration={10}
+          showCursor={true}
+          cursorCharacter="|"
+          className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 text-foreground"
+        />
+
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
           Where logic meets imagination, and code becomes creation
         </p>
       </div>
 
       {/* Skills Badges in a line */}
-      <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 mb-20 max-w-6xl mx-auto px-6">
+      {/* <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 mb-20 max-w-6xl mx-auto px-6">
         {currentSkills.map((skill, index) => (
           <div
             key={skill.name}
@@ -98,7 +124,15 @@ const HeroSection = () => {
             </button>
           </div>
         ))}
-      </div>
+      </div> */}
+      <ScrollVelocity
+        texts={[
+          "- Web Development - Product Design - Building Chatbot - Building AI Agent - Blockchain - Cybersecurity",
+          "- Mobile Development - UI/UX Design - Data Science - Cloud Computing - DevOps - Machine Learning",
+        ]}
+        velocity={40}
+        className="custom-scroll-text text-2xl"
+      />
     </section>
   );
 };

@@ -3,6 +3,7 @@ import portfolio2 from "@/assets/portfolio2.jpg";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { useParallax } from "@/hooks/use-parallax";
+import CircularGallery from "./CircularGallery";
 
 const PortfolioSection = () => {
   // Variables for easy customization
@@ -76,7 +77,20 @@ const PortfolioSection = () => {
         </div>
 
         <div className="relative">
-          <div className="relative rounded-3xl overflow-hidden">
+          <div className="w-full h-[500px]">
+            <CircularGallery
+              bend={3}
+              textColor="#ffffff"
+              borderRadius={0.2}
+              scrollEase={0.5}
+              font="bold 24px sans-serif"
+              items={portfolioItems.map((item) => ({
+                image: item.image,
+                text: item.title,
+              }))}
+            />
+          </div>
+          {/* <div className="relative rounded-3xl overflow-hidden">
             <img
               src={currentItem.image}
               alt={currentItem.title}
@@ -92,10 +106,10 @@ const PortfolioSection = () => {
                 {currentItem.title}
               </h3>
             </div>
-          </div>
+          </div> */}
 
           {/* Navigation */}
-          <div className="flex justify-center items-center gap-4 mt-8">
+          {/* <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={prevSlide}
               className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
@@ -120,7 +134,7 @@ const PortfolioSection = () => {
             >
               <ChevronRight className="w-5 h-5" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

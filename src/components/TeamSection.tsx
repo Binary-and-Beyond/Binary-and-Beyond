@@ -12,6 +12,64 @@ import {
   Linkedin,
 } from "lucide-react";
 import { useState } from "react";
+import ChromaGrid from "./ChromaGrid";
+
+const items = [
+  {
+    image: "https://i.pravatar.cc/300?img=1",
+    title: "Srikar",
+    subtitle: "Frontend Developer",
+    handle: "@srikar",
+    borderColor: "#3B82F6",
+    gradient: "linear-gradient(145deg, #3B82F6, #000)",
+    url: "https://github.com/srikarmk",
+  },
+  {
+    image: "https://i.pravatar.cc/300?img=2",
+    title: "Rajesh",
+    subtitle: "Backend Engineer",
+    handle: "@rajesh",
+    borderColor: "#10B981",
+    gradient: "linear-gradient(180deg, #10B981, #000)",
+    url: "https://linkedin.com/in/rajesh",
+  },
+  {
+    image: "https://i.pravatar.cc/300?img=3",
+    title: "Pujita",
+    subtitle: "Frontend Engineer",
+    handle: "@pujita",
+    borderColor: "#10B981",
+    gradient: "linear-gradient(180deg, #10B981, #000)",
+    url: "https://linkedin.com/in/pujita",
+  },
+  {
+    image: "https://i.pravatar.cc/300?img=4",
+    title: "Utkarsh",
+    subtitle: "Backend Engineer",
+    handle: "@utkarsh",
+    borderColor: "#10B981",
+    gradient: "linear-gradient(180deg, #10B981, #000)",
+    url: "https://linkedin.com/in/utkarsh",
+  },
+  {
+    image: "https://i.pravatar.cc/300?img=5",
+    title: "Amanda",
+    subtitle: "Data Analyst",
+    handle: "@amanda",
+    borderColor: "#10B981",
+    gradient: "linear-gradient(180deg, #10B981, #000)",
+    url: "https://linkedin.com/in/amanda",
+  },
+  {
+    image: "https://i.pravatar.cc/300?img=6",
+    title: "Sahir",
+    subtitle: "Mobile Developer",
+    handle: "@sahir",
+    borderColor: "#10B981",
+    gradient: "linear-gradient(180deg, #10B981, #000)",
+    url: "https://linkedin.com/in/sahir",
+  },
+];
 
 const TeamSection = () => {
   const sectionEyebrow = "Our awesome team";
@@ -116,7 +174,7 @@ const TeamSection = () => {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 mt-10">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 mt-10">
           {teamMembers.map((member, idx) => (
             <div key={idx} className="group">
               <div
@@ -175,6 +233,15 @@ const TeamSection = () => {
               </div>
             </div>
           ))}
+        </div> */}
+        <div style={{ width: "1000px", height: "600px", position: "relative" }}>
+          <ChromaGrid
+            items={items}
+            radius={300}
+            damping={0.45}
+            fadeOut={0.6}
+            ease="power3.out"
+          />
         </div>
       </div>
     </section>
