@@ -11,7 +11,7 @@ const ThreadLoading = ({ onComplete }: ThreadLoadingProps) => {
   const [showBouncingBall, setShowBouncingBall] = useState(false);
 
   useEffect(() => {
-    // Simulate loading progress
+    // Simulate loading progress with smoother increments
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -24,14 +24,16 @@ const ThreadLoading = ({ onComplete }: ThreadLoadingProps) => {
               // Complete loading after reveal animation
               setTimeout(() => {
                 onComplete();
-              }, 500);
-            }, 1500);
-          }, 300);
+              }, 600);
+            }, 1800);
+          }, 400);
           return 100;
         }
-        return prev + 1.5;
+        // Smoother progress with easing
+        const increment = prev < 50 ? 1.2 : prev < 80 ? 1.0 : 0.8;
+        return prev + increment;
       });
-    }, 40);
+    }, 35);
 
     return () => clearInterval(interval);
   }, [onComplete]);

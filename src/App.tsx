@@ -7,11 +7,15 @@ import { useState, useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ThreadLoading from "./components/ThreadLoading";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  // Enable smooth scrolling
+  useSmoothScroll();
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
