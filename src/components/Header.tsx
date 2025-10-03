@@ -64,6 +64,7 @@ const Header = () => {
           <Button
             variant="hero"
             size="sm"
+            onClick={() => scrollToSection("#contact")}
             className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
           >
             Get in touch
@@ -100,6 +101,7 @@ const Header = () => {
             <Button
               variant="hero"
               size="sm"
+              onClick={() => scrollToSection("#contact")}
               className="w-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 mt-4"
             >
               Get in touch
