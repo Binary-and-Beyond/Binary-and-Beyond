@@ -1,5 +1,13 @@
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+import {
+  Palette,
+  Sparkles,
+  Network,
+  BookOpen,
+  Monitor,
+  FileText,
+} from "lucide-react";
 
 const ServicesSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -52,6 +60,70 @@ const ServicesSection = () => {
     }
   }, []);
 
+  const serviceCards = [
+    {
+      id: 1,
+      title: "Website Design & Development",
+      icon: Palette,
+      color: "bg-teal-600",
+      items: [
+        "Custom-built websites tailored to your brand",
+        "Mobile-first, fast-loading designs for optimal performance",
+      ],
+    },
+    {
+      id: 2,
+      title: "AI & Automation",
+      icon: Sparkles,
+      color: "bg-orange-600",
+      items: [
+        "Chatbots and AI-assisted inquiry handling",
+        "Industry-specific digital solutions",
+      ],
+    },
+    {
+      id: 3,
+      title: "Smart Systems & Integrations",
+      icon: Network,
+      color: "bg-purple-600",
+      items: [
+        "Booking and appointment systems",
+        "Intelligent forms with WhatsApp integration",
+        "Automated follow-ups via email or WhatsApp",
+      ],
+    },
+    {
+      id: 4,
+      title: "Branding & Visual Identity",
+      icon: BookOpen,
+      color: "bg-red-600",
+      items: [
+        "Complete brand design and visual identity",
+        "Social media branding and content strategy",
+      ],
+    },
+    {
+      id: 5,
+      title: "Showcase & Marketing Collateral",
+      icon: FileText,
+      color: "bg-pink-600",
+      items: [
+        "Portfolio and product showcase pages",
+        "Digital brochures, catalogues, and PDFs",
+      ],
+    },
+    {
+      id: 6,
+      title: "SEO & Online Presence",
+      icon: Monitor,
+      color: "bg-indigo-600",
+      items: [
+        "SEO strategies for local and global visibility",
+        "Google Business Profile setup and optimization",
+      ],
+    },
+  ];
+
   return (
     <section
       id="services"
@@ -79,12 +151,12 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative px-0 sm:px-14">
           {/* Left Arrow Button */}
           {canScrollLeft && (
             <button
               onClick={scrollLeft}
-              className="hidden sm:flex absolute left-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white/30 transition-all duration-300 z-10 -translate-x-14"
+              className="hidden sm:flex absolute left-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white/30 transition-all duration-300 z-10"
             >
               <ArrowLeft className="w-6 h-6 text-white" />
             </button>
@@ -92,215 +164,45 @@ const ServicesSection = () => {
 
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide pb-4"
+            className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-hide pb-4"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            {/* Website and Digital Presence Card */}
-            <div className="bg-teal-primary rounded-3xl p-6 md:p-8 text-white relative overflow-hidden min-w-[320px] md:min-w-[500px] flex-shrink-0">
-              <h3 className="text-xl md:text-2xl font-bold mb-6">
-                Website and digital presence
-              </h3>
-
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Website design and development
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Mobile-first, fast loading designs
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">Booking/appointment systems</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Smart forms via WhatsApp integrations
-                  </span>
-                </div>
-              </div>
-
-              <div className="border-t border-white/20 pt-6">
-                <p className="text-xs text-white/80 mb-4">Our history</p>
-                <div className="flex justify-between items-end">
-                  <div>
-                    <div className="text-2xl md:text-3xl font-bold">
-                      50% faster
-                    </div>
-                    <div className="text-sm text-white/80">
-                      launch of projects
-                    </div>
+            {serviceCards.map((card) => {
+              const IconComponent = card.icon;
+              return (
+                <div
+                  key={card.id}
+                  className={`${card.color} rounded-3xl p-4 sm:p-6 md:p-8 text-white relative overflow-hidden min-w-[280px] sm:min-w-[320px] md:min-w-[380px] flex-shrink-0 h-[320px] sm:h-[350px] flex flex-col`}
+                >
+                  {/* Icon */}
+                  <div className="mb-4">
+                    <IconComponent className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
                   </div>
-                  <div>
-                    <div className="text-2xl md:text-3xl font-bold">5</div>
-                    <div className="text-sm text-white/80">
-                      projects completed
-                    </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 leading-tight">
+                    {card.title}
+                  </h3>
+
+                  {/* Content */}
+                  <div className="space-y-3 flex-1">
+                    {card.items.map((item, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="text-sm leading-relaxed">{item}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Marketing and Growth Card */}
-            <div className="bg-orange-primary rounded-3xl p-6 md:p-8 text-white relative overflow-hidden min-w-[320px] md:min-w-[500px] flex-shrink-0">
-              <h3 className="text-xl md:text-2xl font-bold mb-6">
-                Marketing and growth
-              </h3>
-
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    SEO for local and global ranking
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Google Business profile setup and optimization
-                  </span>
-                </div>
-              </div>
-
-              <div className="border-t border-white/20 pt-6">
-                <p className="text-xs text-white/80 mb-4">Our history</p>
-                <div className="flex justify-between items-end">
-                  <div>
-                    <div className="text-2xl md:text-3xl font-bold">
-                      50% faster
-                    </div>
-                    <div className="text-sm text-white/80">
-                      launch of projects
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-2xl md:text-3xl font-bold">5</div>
-                    <div className="text-sm text-white/80">
-                      projects completed
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Creative & Content Card */}
-            <div className="bg-purple-primary rounded-3xl p-6 md:p-8 text-white relative overflow-hidden min-w-[320px] md:min-w-[500px] flex-shrink-0">
-              <div className="absolute top-4 right-4 text-6xl font-bold text-white/10">
-                03
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold mb-6">
-                Creative & content
-              </h3>
-
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Visual identity and brand design
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Portfolio or product showcase pages
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Marketing collateral (digital brochures, catalogues, PDFs)
-                  </span>
-                </div>
-              </div>
-
-              <div className="border-t border-white/20 pt-6">
-                <p className="text-xs text-white/80 mb-4">Our history</p>
-                <div className="flex justify-between items-end">
-                  <div>
-                    <div className="text-2xl md:text-3xl font-bold">
-                      50% faster
-                    </div>
-                    <div className="text-sm text-white/80">
-                      launch of projects
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-2xl md:text-3xl font-bold">5</div>
-                    <div className="text-sm text-white/80">
-                      projects completed
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Data Analytics & Others Card */}
-            <div className="bg-red-primary rounded-3xl p-6 md:p-8 text-white relative overflow-hidden min-w-[320px] md:min-w-[500px] flex-shrink-0">
-              <div className="absolute top-4 right-4 text-6xl font-bold text-white/10">
-                04
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold mb-6">
-                Data analytics & others
-              </h3>
-
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Chatbots and AI-assisted inquiry handling
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Automated follow-ups via email or WhatsApp
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">Industry-specific solutions</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white rounded-full"></span>
-                  <span className="text-sm">
-                    Social media branding and content strategy
-                  </span>
-                </div>
-              </div>
-
-              <div className="border-t border-white/20 pt-6">
-                <p className="text-xs text-white/80 mb-4">Our history</p>
-                <div className="flex justify-between items-end">
-                  <div>
-                    <div className="text-2xl md:text-3xl font-bold">
-                      50% faster
-                    </div>
-                    <div className="text-sm text-white/80">
-                      launch of projects
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-2xl md:text-3xl font-bold">5</div>
-                    <div className="text-sm text-white/80">
-                      projects completed
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
 
           {/* Right Arrow Button */}
           {canScrollRight && (
             <button
               onClick={scrollRight}
-              className="hidden sm:flex absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white/30 transition-all duration-300 z-10 translate-x-14"
+              className="hidden sm:flex absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white/30 transition-all duration-300 z-10"
             >
               <ArrowRight className="w-6 h-6 text-white" />
             </button>
