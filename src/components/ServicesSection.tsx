@@ -1,6 +1,5 @@
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
-import { useParallax } from "@/hooks/use-parallax";
 
 const ServicesSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -53,7 +52,6 @@ const ServicesSection = () => {
     }
   }, []);
 
-  const headingRef = useParallax({ speed: 0.12, maxTranslate: 20 });
   return (
     <section
       id="services"
@@ -61,18 +59,21 @@ const ServicesSection = () => {
       style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)`,
         backgroundSize: "20px 20px",
-        backgroundAttachment: "fixed",
       }}
     >
       <div className="max-w-6xl mx-auto">
-        <div
-          ref={headingRef as React.RefObject<HTMLDivElement>}
-          className="mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-            Our services
+        <div className="mb-16 text-center">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-500/10 to-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-teal-500/20">
+            <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
+            <span className="text-teal-400 text-sm font-medium">
+              What we do best
+            </span>
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-teal-200 to-blue-200 bg-clip-text text-transparent">
+            Our Services
           </h2>
-          <p className="text-muted-foreground max-w-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             We offer more than just freelance services. We deliver digital
             craftsmanship that bridges logic and imagination.
           </p>

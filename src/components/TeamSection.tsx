@@ -3,6 +3,10 @@ import boy1 from "@/assets/boy1.jpg";
 import boy3 from "@/assets/boy3.jpg";
 import girl1 from "@/assets/girl1.jpg";
 import girl2 from "@/assets/girl2.jpg";
+import srikarImage from "@/assets/Srikar.png";
+import rajeshImage from "@/assets/Rajesh.jpeg";
+import pujitaImage from "@/assets/Pujita.jpg";
+import sahirImage from "@/assets/Sahir.png";
 import {
   ChevronLeft,
   ChevronRight,
@@ -82,65 +86,47 @@ const TeamSection = () => {
     title: string;
     email: string;
     image: string;
-    color: string; // tailwind class for the image block background
+    github?: string;
+    linkedin?: string;
+    portfolio?: string;
   };
 
   const teamMembers: Member[] = [
     {
-      name: "Srikar",
-      title: "Full stack engineer",
-      email: "srikar@gmail.com",
-      image: boy1,
-      color: "bg-rose-900",
+      name: "M K Sai Srikar",
+      title: "Full Stack Developer",
+      email: "Srikarmks@gmail.com",
+      image: srikarImage,
+      github: "https://github.com/srikarmk",
+      linkedin: "https://www.linkedin.com/in/srikarmk/",
+      portfolio: "https://www.srikarmk.tech",
     },
     {
-      name: "Rajesh",
-      title: "Product designer",
-      email: "rajesh@gmail.com",
-      image: girl2,
-      color: "bg-amber-600",
+      name: "Rajesh Challa",
+      title: "Product Designer",
+      email: "rajeshchalla104@gmail.com",
+      image: rajeshImage,
+      github: "https://github.com/rajeshchalla10",
+      linkedin: "https://www.linkedin.com/in/rajeshchallaoffical/",
+      portfolio: "#",
     },
     {
-      name: "Pujita",
-      title: "Frontend engineer",
-      email: "pujita@gmail.com",
-      image: girl1,
-      color: "bg-blue-900",
+      name: "Pujita Sunnapu",
+      title: "Frontend Engineer",
+      email: "pujitasunnapu@gmail.com",
+      image: pujitaImage,
+      github: "https://github.com/pujitasunnapu",
+      linkedin: "https://www.linkedin.com/in/pujitasunnapu",
+      portfolio: "#",
     },
     {
-      name: "Utkarsh",
-      title: "Backend engineer",
-      email: "utkarsh@gmail.com",
-      image: boy3,
-      color: "bg-rose-900",
-    },
-    {
-      name: "Amanda",
-      title: "Data analyst",
-      email: "amanda@gmail.com",
-      image: girl1,
-      color: "bg-blue-900",
-    },
-    {
-      name: "Sahir",
-      title: "Mobile developer",
-      email: "sahir@gmail.com",
-      image: girl2,
-      color: "bg-amber-600",
-    },
-    {
-      name: "Usama",
-      title: "AI engineer",
-      email: "usama@gmail.com",
-      image: boy2,
-      color: "bg-emerald-800",
-    },
-    {
-      name: "Dhriti",
-      title: "UX designer",
-      email: "dhriti@gmail.com",
-      image: girl2,
-      color: "bg-amber-600",
+      name: "Sahir Mohammad",
+      title: "Mobile Developer",
+      email: "crsahir7@gmail.com",
+      image: sahirImage,
+      github: "https://github.com/crbeluga7",
+      linkedin: "https://www.linkedin.com/in/sahir-mohammad/",
+      portfolio: "#",
     },
   ];
 
@@ -155,86 +141,123 @@ const TeamSection = () => {
       }}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <div className="text-sm text-emerald-400">{sectionEyebrow}</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">
-              {sectionTitle}
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mt-3">
-              {sectionSubtitle}
-            </p>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-emerald-500/20">
+            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+            <span className="text-emerald-400 text-sm font-medium">
+              {sectionEyebrow}
+            </span>
           </div>
+
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-emerald-200 to-teal-200 bg-clip-text text-transparent">
+            Meet Our Amazing Team
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg mb-8">
+            {sectionSubtitle}
+          </p>
+
           <a
             href="#contact"
-            className="text-emerald-400 text-sm whitespace-nowrap hidden md:inline-flex items-center gap-1"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
-            Learn more
-            <span aria-hidden>↗</span>
+            Work with us
+            <span className="transform group-hover:translate-x-1 transition-transform duration-300">
+              →
+            </span>
           </a>
         </div>
 
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 mt-10">
           {teamMembers.map((member, idx) => (
-            <div key={idx} className="group">
-              <div
-                className={`rounded-xl overflow-hidden ${member.color} aspect-square flex items-center justify-center`}
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="h-4/5 object-cover transition-transform duration-300 group-hover:scale-105"
-                />
+            <div key={idx} className="group cursor-pointer">
+              <div className="relative">
+                <div className="rounded-2xl overflow-hidden aspect-square relative transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-emerald-500/20 group-hover:scale-105 group-hover:-translate-y-2">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                  />
+
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                </div>
               </div>
-              <div className="mt-4">
-                <div className="text-foreground font-semibold">
+
+              {/* Social links below photo */}
+              <div className="mt-6 flex justify-center items-center gap-3">
+                <a
+                  href={member.github || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className={`bg-white/10 backdrop-blur-sm p-2 rounded-full hover:bg-emerald-500/20 transition-all duration-200 hover:scale-125 border border-white/20 ${
+                    !member.github
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:shadow-lg hover:border-emerald-400/50"
+                  }`}
+                  onClick={
+                    !member.github ? (e) => e.preventDefault() : undefined
+                  }
+                >
+                  <Github
+                    size={18}
+                    className="text-foreground group-hover:text-emerald-400 transition-colors duration-200"
+                  />
+                </a>
+                <a
+                  href={member.linkedin || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className={`bg-white/10 backdrop-blur-sm p-2 rounded-full hover:bg-emerald-500/20 transition-all duration-200 hover:scale-125 border border-white/20 ${
+                    !member.linkedin
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:shadow-lg hover:border-emerald-400/50"
+                  }`}
+                  onClick={
+                    !member.linkedin ? (e) => e.preventDefault() : undefined
+                  }
+                >
+                  <Linkedin
+                    size={18}
+                    className="text-foreground group-hover:text-emerald-400 transition-colors duration-200"
+                  />
+                </a>
+                {member.portfolio !== "#" && (
+                  <a
+                    href={member.portfolio || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Portfolio"
+                    className={`bg-white/10 backdrop-blur-sm p-2 rounded-full hover:bg-emerald-500/20 transition-all duration-200 hover:scale-125 border border-white/20 ${
+                      !member.portfolio
+                        ? "opacity-50 cursor-not-allowed"
+                        : "hover:shadow-lg hover:border-emerald-400/50"
+                    }`}
+                    onClick={
+                      !member.portfolio ? (e) => e.preventDefault() : undefined
+                    }
+                  >
+                    <Globe
+                      size={18}
+                      className="text-foreground group-hover:text-emerald-400 transition-colors duration-200"
+                    />
+                  </a>
+                )}
+              </div>
+
+              <div className="mt-6 text-center">
+                <div className="text-foreground font-bold text-xl mb-2 group-hover:text-emerald-400 transition-all duration-300 group-hover:scale-105">
                   {member.name}
                 </div>
-                <a
-                  href={`mailto:${member.email}`}
-                  className="text-xs text-emerald-400"
-                >
-                  {member.email}
-                </a>
-                <p className="text-xs text-muted-foreground mt-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  diam nonummy.
+                <p className="text-muted-foreground group-hover:text-emerald-300/80 transition-all duration-300 group-hover:translate-y-1">
+                  {member.title}
                 </p>
-                <div className="flex items-center gap-3 text-muted-foreground mt-3 text-xs">
-                  <a
-                    href="#"
-                    aria-label="Website"
-                    className="hover:text-foreground"
-                  >
-                    <Globe size={14} />
-                  </a>
-                  <a
-                    href="#"
-                    aria-label="Email"
-                    className="hover:text-foreground"
-                  >
-                    <Mail size={14} />
-                  </a>
-                  <a
-                    href="#"
-                    aria-label="GitHub"
-                    className="hover:text-foreground"
-                  >
-                    <Github size={14} />
-                  </a>
-                  <a
-                    href="#"
-                    aria-label="LinkedIn"
-                    className="hover:text-foreground"
-                  >
-                    <Linkedin size={14} />
-                  </a>
-                </div>
               </div>
             </div>
           ))}
-        </div> */}
-        <div style={{ width: "1000px", height: "600px", position: "relative" }}>
+        </div>
+        {/* <div style={{ width: "1000px", height: "600px", position: "relative" }}>
           <ChromaGrid
             items={items}
             radius={300}
@@ -242,7 +265,7 @@ const TeamSection = () => {
             fadeOut={0.6}
             ease="power3.out"
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );
