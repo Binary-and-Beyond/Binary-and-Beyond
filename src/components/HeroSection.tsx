@@ -91,7 +91,7 @@ const HeroSection = () => {
 
       <div className="max-w-4xl mx-auto text-center mb-16 relative z-10 mt-20">
         <TextType
-          text={["Welcome to Innovation"]}
+          text={["Welcome to Binary and Beyond"]}
           typingSpeed={75}
           pauseDuration={10}
           showCursor={true}
