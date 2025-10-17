@@ -133,7 +133,7 @@ const TeamSection = () => {
   return (
     <section
       id="about"
-      className="py-20 px-6 bg-background relative"
+      className="pt-24 pb-20 px-6 bg-background relative"
       style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)`,
         backgroundSize: "20px 20px",

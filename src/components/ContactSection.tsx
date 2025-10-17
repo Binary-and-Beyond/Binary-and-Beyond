@@ -46,7 +46,7 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-20 px-6 bg-gradient-to-br from-teal-primary/80 via-purple-primary/60 to-background relative overflow-hidden"
+      className="pt-24 pb-20 px-6 bg-gradient-to-br from-teal-primary/80 via-purple-primary/60 to-background relative overflow-hidden"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0">

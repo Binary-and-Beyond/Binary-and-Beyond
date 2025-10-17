@@ -3,11 +3,17 @@
   100% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
-  25% {
-    transform: translate(-50%, -50%) rotate(1.5deg);
+  20% {
+    transform: translate(-50%, -50%) rotate(1.2deg);
   }
-  75% {
-    transform: translate(-50%, -50%) rotate(-1.5deg);
+  40% {
+    transform: translate(-50%, -50%) rotate(0.8deg);
+  }
+  60% {
+    transform: translate(-50%, -50%) rotate(-0.8deg);
+  }
+  80% {
+    transform: translate(-50%, -50%) rotate(-1.2deg);
   }
 }
 
@@ -65,32 +71,51 @@
 }
 
 @keyframes ballBounce {
-  0%,
-  100% {
+  0% {
     transform: translateY(0px) scale(1);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
       0 0 40px rgba(255, 255, 255, 0.3);
   }
-  25% {
-    transform: translateY(-25px) scale(1.15);
+  15% {
+    transform: translateY(-15px) scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6),
+      0 0 45px rgba(255, 255, 255, 0.4);
+  }
+  30% {
+    transform: translateY(-30px) scale(1.18);
     box-shadow: 0 0 35px rgba(255, 255, 255, 0.8),
       0 0 60px rgba(255, 255, 255, 0.5);
   }
-  50% {
+  45% {
+    transform: translateY(-45px) scale(1.25);
+    box-shadow: 0 0 45px rgba(255, 255, 255, 0.9),
+      0 0 75px rgba(255, 255, 255, 0.6);
+  }
+  60% {
     transform: translateY(-50px) scale(1.3);
     box-shadow: 0 0 50px rgba(255, 255, 255, 1),
       0 0 80px rgba(255, 255, 255, 0.7);
   }
   75% {
-    transform: translateY(-25px) scale(1.15);
-    box-shadow: 0 0 35px rgba(255, 255, 255, 0.8),
-      0 0 60px rgba(255, 255, 255, 0.5);
+    transform: translateY(-35px) scale(1.2);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8),
+      0 0 65px rgba(255, 255, 255, 0.5);
+  }
+  90% {
+    transform: translateY(-15px) scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6),
+      0 0 45px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 40px rgba(255, 255, 255, 0.3);
   }
 }
 
 .thread-bob {
-  animation: threadSwing 4s cubic-bezier(0.4, 0, 0.6, 1) infinite,
-    threadGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: threadSwing 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite,
+    threadGlow 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
 }
 
 .floating-particle {
@@ -121,5 +146,5 @@
 }
 
 .bouncing-ball {
-  animation: ballBounce 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: ballBounce 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
 }

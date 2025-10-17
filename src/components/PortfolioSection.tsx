@@ -69,7 +69,7 @@ const PortfolioSection = () => {
   return (
     <section
       id="portfolio"
-      className="py-20 px-6 bg-background relative overflow-hidden"
+      className="pt-24 pb-20 px-6 bg-background relative overflow-hidden"
       style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)`,
         backgroundSize: "20px 20px",

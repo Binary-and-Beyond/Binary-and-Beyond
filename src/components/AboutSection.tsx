@@ -4,7 +4,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="py-20 px-6 bg-background relative"
+      className="pt-24 pb-20 px-6 bg-background relative"
       style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)`,
         backgroundSize: "20px 20px",
@@ -67,11 +67,8 @@ const AboutSection = () => {
 
             {/* Call to Action */}
             <div className="space-y-4">
-              <h3 className="text-xl md:text-2xl font-bold text-foreground">
-                Join Us
-              </h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                As we write the next chapter of our story.
+                Join us as we write the next chapter of our story.
               </p>
 
               <a
@@ -86,7 +83,7 @@ const AboutSection = () => {
 
           {/* Right Column - Image */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden aspect-[3/2] shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="Team collaboration and innovation"

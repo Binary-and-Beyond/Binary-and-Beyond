@@ -11,7 +11,7 @@ const ThreadLoading = ({ onComplete }: ThreadLoadingProps) => {
   const [showBouncingBall, setShowBouncingBall] = useState(false);
 
   useEffect(() => {
-    // Simulate loading progress with smoother increments
+    // Simulate loading progress with faster, smoother increments
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -25,15 +25,16 @@ const ThreadLoading = ({ onComplete }: ThreadLoadingProps) => {
               setTimeout(() => {
                 onComplete();
               }, 600);
-            }, 1800);
-          }, 400);
+            }, 1200); // Reduced from 1800ms to 1200ms
+          }, 200); // Reduced from 400ms to 200ms
           return 100;
         }
-        // Smoother progress with easing
-        const increment = prev < 50 ? 1.2 : prev < 80 ? 1.0 : 0.8;
+        // Faster, smoother progress with better easing
+        const increment =
+          prev < 30 ? 2.5 : prev < 60 ? 2.0 : prev < 85 ? 1.5 : 1.0;
         return prev + increment;
       });
-    }, 35);
+    }, 20); // Reduced from 35ms to 20ms for smoother animation
 
     return () => clearInterval(interval);
   }, [onComplete]);
@@ -74,8 +75,10 @@ const ThreadLoading = ({ onComplete }: ThreadLoadingProps) => {
             <div
               className="absolute w-4 h-4 bg-white/90 rounded-full thread-bob"
               style={{
-                top: `${20 + progress * 0.6}%`,
+                top: `${20 + progress * 0.65}%`,
                 left: "50%",
+                transform: "translate(-50%, -50%)",
+                transition: "top 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
               }}
             />
           </div>
